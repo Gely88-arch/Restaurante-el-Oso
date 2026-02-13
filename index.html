@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurante El Oso - Mariscos en Cuastecomates</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- CSS personalizado -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light">
+
+  <!-- Header con dos logos en esquinas -->
+  <header class="bg-success text-white text-center p-4 position-relative">
+    <!-- Logos en esquinas -->
+    <img src="Imagenes/LogoOso" alt="Logo Restaurante El Oso" class="logo logo-top-left">
+    <img src="Imagenes/LogoOso.png" alt="Logo Restaurante El Oso" class="logo logo-top-right">
+
+    <!-- Texto central -->
+    <h1 class="fw-bold">Restaurante El Oso</h1>
+    <p>Mariscos frescos en Playa Cuastecomates, Jalisco</p>
+    <p>Tel: +52 1 315 110 5178</p>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand text-success fw-bold" href="#">El Oso</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link text-success" href="#entradas">Entradas</a></li>
+          <li class="nav-item"><a class="nav-link text-success" href="#especialidades">Especialidades</a></li>
+          <li class="nav-item"><a class="nav-link text-success" href="#cocteles">Cocteles</a></li>
+          <li class="nav-item"><a class="nav-link text-success" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carrusel -->
+  <div id="carouselOso" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="Imagenes/cevichepescado.jpg" class="d-block w-100 carrusel-img" alt="Ceviche fresco">
+      </div>
+      <div class="carousel-item">
+        <img src="Imagenes/pescadozarandeado.png" class="d-block w-100 carrusel-img" alt="Pescado zarandeado">
+      </div>
+      <div class="carousel-item">
+        <img src="Imagenes/cocteldecamaron.jpg" class="d-block w-100 carrusel-img" alt="Coctel de camarón">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselOso" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselOso" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- Secciones -->
+  <main class="container my-5">
+    <!-- Entradas -->
+    <section id="entradas">
+      <h2 class="text-center text-success mb-4">Entradas</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-3 mb-3">
+          <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Ceviche Fresco','Pescado molido marinado en jugo de limón con verdura fresca y un toque de cilantro.')">
+            <img src="Imagenes/ceviche.jpg" class="card-img-top platillo-img" alt="Ceviche fresco">
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Aguachile Negro','Oscuro, fresco y delicioso: camarón y pulpo como nunca antes.')">
+            <img src="Imagenes/aguachilenegro.jpg" class="card-img-top platillo-img" alt="Aguachile Negro">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Especialidades -->
+    <section id="especialidades" class="mt-5">
+      <h2 class="text-center text-success mb-4">Especialidades</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-3 mb-3">
+          <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Pescado Zarandeado','La especialidad de la casa, asado al estilo tradicional.')">
+            <img src="Imagenes/pescadozarandeado.png" class="card-img-top platillo-img" alt="Pescado zarandeado">
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Torre de Mariscos','Una torre fresca y colorida con capas de pepino, cebolla morada, ceviche de pez, atún, aguacate, camarón cocido, coco y callo, bañada en salsas cítricas que realzan todo el sabor del mar.')">
+            <img src="Imagenes/torredemariscos.jpg" class="card-img-top platillo-img" alt="Torre de Mariscos">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cocteles -->
+    <section id="cocteles" class="mt-5">
+      <h2 class="text-center text-success mb-4">Cocteles</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-3 mb-3">
+          <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Coctel de Camarón','Camarones frescos servidos en salsa de tomate con jugo de limón, cebolla y cilantro, un clásico refrescante frente al mar.')">
+            <img src="Imagenes/coctel1.jpg" class="card-img-top platillo-img" alt="Coctel de camarón">
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Coctel Mixto','Combinación de camarón, pulpo y caracol en salsa especial con un toque cítrico, ideal para quienes buscan más sabor en cada bocado.')">
+            <img src="Imagenes/coctelmixto1.jpg" class="card-img-top platillo-img" alt="Coctel Mixto ">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="mt-5 text-center">
+      <h2 class="text-success">Contacto</h2>
+      <p>📍 Playa Cuastecomates, Jalisco</p>
+      <p>📞 Tel: +52 1 315 110 5178</p>
+      <button class="btn btn-success" onclick="mostrarPromocion()">Ver Promoción del Día</button>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-success text-white text-center p-3">
+    <p>&copy; 2026 Restaurante El Oso - Playa Cuastecomates, Jalisco</p>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalDescripcion" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content border-success">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="modalTitulo"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="modalTexto"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS + Script personalizado -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
