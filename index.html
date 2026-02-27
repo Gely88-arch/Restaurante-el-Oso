@@ -9,16 +9,17 @@
   <!-- CSS personalizado -->
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-light">
+<body>
 
+  <!-- Banner principal -->
   <header class="bg-success text-white text-center p-4 position-relative">
-    <img src="Imagenes/LogoOso" alt="Logo Restaurante El Oso" class="logo logo-top-left">
+    <img src="Imagenes/LogoOso.png" alt="Logo Restaurante El Oso" class="logo logo-top-left">
     <img src="Imagenes/LogoOso.png" alt="Logo Restaurante El Oso" class="logo logo-top-right">
 
-    <!-- Texto central -->
     <h1 class="fw-bold">Restaurante El Oso</h1>
     <p>Mariscos frescos en Playa Cuastecomates, Jalisco</p>
     <p>Tel: +52 1 315 110 5178</p>
+    <a href="#carta" class="btn btn-light fw-bold mt-3">Ver Nuestra Carta</a>
   </header>
 
   <!-- Navbar -->
@@ -30,9 +31,7 @@
       </button>
       <div class="collapse navbar-collapse" id="menuNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link text-success" href="#entradas">Entradas</a></li>
-          <li class="nav-item"><a class="nav-link text-success" href="#especialidades">Especialidades</a></li>
-          <li class="nav-item"><a class="nav-link text-success" href="#cocteles">Cocteles</a></li>
+          <li class="nav-item"><a class="nav-link text-success" href="#carta">Nuestra Carta</a></li>
           <li class="nav-item"><a class="nav-link text-success" href="#contacto">Contacto</a></li>
         </ul>
       </div>
@@ -60,54 +59,45 @@
     </button>
   </div>
 
-  <!-- Secciones -->
+  <!-- Nuestra Carta -->
   <main class="container my-5">
-    <!-- Entradas -->
-    <section id="entradas">
-      <h2 class="text-center text-success mb-4">Entradas</h2>
+    <section id="carta">
+      <h2 class="text-center text-success mb-4">Nuestra Carta</h2>
       <div class="row justify-content-center">
+        <!-- Platillo 1 -->
         <div class="col-md-3 mb-3">
           <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Ceviche Fresco','Pescado molido marinado en jugo de limón con verdura fresca y un toque de cilantro.')">
             <img src="Imagenes/ceviche.jpg" class="card-img-top platillo-img" alt="Ceviche fresco">
+            <div class="card-body">
+              <h5 class="card-title text-success">Ceviche Fresco</h5>
+            </div>
           </div>
         </div>
+        <!-- Platillo 2 -->
         <div class="col-md-3 mb-3">
           <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Aguachile Negro','Oscuro, fresco y delicioso: camarón y pulpo como nunca antes.')">
             <img src="Imagenes/aguachilenegro.jpg" class="card-img-top platillo-img" alt="Aguachile Negro">
+            <div class="card-body">
+              <h5 class="card-title text-success">Aguachile Negro</h5>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Especialidades -->
-    <section id="especialidades" class="mt-5">
-      <h2 class="text-center text-success mb-4">Especialidades</h2>
-      <div class="row justify-content-center">
+        <!-- Platillo 3 -->
         <div class="col-md-3 mb-3">
-          <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Pescado Zarandeado','La especialidad de la casa, asado al estilo tradicional.')">
-            <img src="Imagenes/pescadozarandeado.png" class="card-img-top platillo-img" alt="Pescado zarandeado">
-          </div>
-        </div>
-        <div class="col-md-3 mb-3">
-          <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Torre de Mariscos','Una torre fresca y colorida con capas de pepino, cebolla morada, ceviche de pez, atún, aguacate, camarón cocido, coco y callo, bañada en salsas cítricas que realzan todo el sabor del mar.')">
+          <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Torre de Mariscos','Capas de pepino, cebolla morada, ceviche de pez, atún, aguacate, camarón cocido, coco y callo, bañada en salsas cítricas.')">
             <img src="Imagenes/torredemariscos.jpg" class="card-img-top platillo-img" alt="Torre de Mariscos">
+            <div class="card-body">
+              <h5 class="card-title text-success">Torre de Mariscos</h5>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Cocteles -->
-    <section id="cocteles" class="mt-5">
-      <h2 class="text-center text-success mb-4">Cocteles</h2>
-      <div class="row justify-content-center">
+        <!-- Platillo 4 -->
         <div class="col-md-3 mb-3">
-          <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Coctel de Camarón','Camarones frescos servidos en salsa de tomate con jugo de limón, cebolla y cilantro, un clásico refrescante frente al mar.')">
-            <img src="Imagenes/coctel1.jpg" class="card-img-top platillo-img" alt="Coctel de camarón">
-          </div>
-        </div>
-        <div class="col-md-3 mb-3">
-          <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Coctel Mixto','Combinación de camarón, pulpo y caracol en salsa especial con un toque cítrico, ideal para quienes buscan más sabor en cada bocado.')">
-            <img src="Imagenes/coctelmixto1.jpg" class="card-img-top platillo-img" alt="Coctel Mixto ">
+          <div class="card border-success shadow-sm" onclick="mostrarDescripcion('Coctel Mixto','Combinación de camarón, pulpo y caracol en salsa especial con un toque cítrico.')">
+            <img src="Imagenes/coctelmixto1.jpg" class="card-img-top platillo-img" alt="Coctel Mixto">
+            <div class="card-body">
+              <h5 class="card-title text-success">Coctel Mixto</h5>
+            </div>
           </div>
         </div>
       </div>
