@@ -172,8 +172,8 @@
   }
   .slider-dots button.active{ background:var(--honey); }
 
-  /* ---------- MENU ---------- */
-  .menu{
+  /* ---------- SERVICIOS ---------- */
+  .servicios{
     padding:6.5rem 6vw;
     background:var(--sand);
     color:var(--pine);
@@ -185,25 +185,28 @@
   .section-head h2{ font-size:clamp(2rem, 4vw, 3rem); }
   .section-head p{ max-width:340px; color:#4B4534; font-size:0.94rem; line-height:1.55; }
 
-  .dish-grid{
+  .service-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
     gap:1.5rem;
   }
-  .dish{
+  .service-card{
     background:var(--pine); color:var(--sand);
     border-radius:3px; overflow:hidden;
     text-align:left; width:100%;
+    padding:2.2rem 1.8rem 2rem;
     transition:transform 0.25s ease, box-shadow 0.25s ease;
     box-shadow:0 10px 22px rgba(22,40,29,0.1);
   }
-  .dish:hover{ transform:translateY(-4px); box-shadow:0 16px 30px rgba(22,40,29,0.2); }
-  .dish img{ width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
-  .dish-body{ padding:1.3rem 1.4rem 1.5rem; }
-  .dish-name-row{ display:flex; justify-content:space-between; align-items:baseline; gap:0.6rem; margin-bottom:0.5rem; }
-  .dish-name{ font-family:'Fraunces', serif; font-size:1.15rem; font-weight:600; }
-  .dish-price{ font-family:'IBM Plex Mono', monospace; font-size:0.92rem; color:var(--honey); white-space:nowrap; }
-  .dish-cta{ font-size:0.78rem; color:var(--sand-dim); letter-spacing:0.04em; text-transform:uppercase; }
+  .service-card:hover{ transform:translateY(-4px); box-shadow:0 16px 30px rgba(22,40,29,0.2); }
+  .service-icon{
+    width:52px; height:52px; border-radius:50%;
+    background:var(--honey); color:var(--pine);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.4rem; margin-bottom:1.4rem;
+  }
+  .service-name{ font-family:'Fraunces', serif; font-size:1.3rem; font-weight:600; margin-bottom:0.7rem; }
+  .service-desc{ font-size:0.92rem; line-height:1.6; color:var(--sand-dim); }
 
   /* ---------- CARTA COMPLETA (banner + lista por categorías) ---------- */
   .carta-completa{ background:var(--sand); color:var(--pine); }
@@ -325,7 +328,8 @@
   <div class="brand"><span class="mark">O</span>El Oso</div>
   <button class="nav-toggle" id="navToggle" aria-label="Abrir menú de navegación" aria-expanded="false">☰</button>
   <div class="navlinks" id="navLinks">
-    <a href="#carta">Nuestra Carta</a>
+    <a href="#carta">Nuestros Servicios</a>
+    <a href="#carta-completa">Carta</a>
     <a href="#contacto">Contacto</a>
   </div>
 </nav>
@@ -368,13 +372,27 @@
   <div class="slider-dots" id="sliderDots"></div>
 </div>
 
-<section class="menu" id="carta">
+<section class="servicios" id="carta">
   <div class="section-head">
-    <h2>Nuestra carta</h2>
-    <p>Toca cualquier platillo para ver la descripción completa.</p>
+    <h2>Nuestros servicios</h2>
+    <p>Todo lo que preparamos, dividido en nuestras tres estaciones de cocina.</p>
   </div>
-  <div class="dish-grid" id="dishGrid">
-    <!-- las tarjetas se generan con JS a partir de dishData -->
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-icon">❄️</div>
+      <div class="service-name">Cocina Fría</div>
+      <div class="service-desc">Ceviches, aguachiles, cocteles y tiritas: pescados y mariscos frescos marinados en cítricos, servidos bien fríos.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔥</div>
+      <div class="service-name">Cocina Caliente</div>
+      <div class="service-desc">Pescado zarandeado y platillos asados lentamente al carbón, al estilo tradicional de la costa del Pacífico.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍹</div>
+      <div class="service-name">Barmat (Bebidas)</div>
+      <div class="service-desc">Micheladas, Refrescos , Cervezas y bebidas de la casa para acompañar tu comida frente al mar.</div>
+    </div>
   </div>
 </section>
 
@@ -492,7 +510,7 @@
 </div>
 
 <script>
-  // ---------- Datos de los platillos ----------
+  // ---------- Datos de los platillos (se usan en "Carta de El Oso" al hacer click en cada renglón) ----------
   const dishData = [
     { name:'Ceviche Fresco', img:'Imagenes/cevichepescado.jpg', price:'$150', desc:'Pescado molido marinado en jugo de limón con verdura fresca y un toque de cilantro.' },
     { name:'Aguachile Negro', img:'Imagenes/aguachilenegro.jpg', price:'$210', desc:'Oscuro, fresco y delicioso: camarón y pulpo como nunca antes.' },
@@ -501,25 +519,6 @@
     { name:'Pescado Zarandeado', img:'Imagenes/pescadozarandeado.png', price:'$280', desc:'Pescado fresco marinado en especias y asado lentamente al carbón, al estilo tradicional de la costa del Pacífico. Crujiente por fuera, jugoso por dentro.' },
     { name:'Tiritas de Pescado', img:'Imagenes/tiras.jpg', price:'$160', desc:'Tiras de pescado fresco, curtidas en jugo de limón al estilo tradicional, servidas con la salsa de tu elección: roja, verde o negra.' },
   ];
-
-  // ---------- Render de la carta (tarjetas con imagen) ----------
-  const dishGrid = document.getElementById('dishGrid');
-  dishData.forEach((dish, i) => {
-    const card = document.createElement('button');
-    card.className = 'dish';
-    card.innerHTML = `
-      <img src="${dish.img}" alt="${dish.name}">
-      <div class="dish-body">
-        <div class="dish-name-row">
-          <span class="dish-name">${dish.name}</span>
-          <span class="dish-price">${dish.price}</span>
-        </div>
-        <div class="dish-cta">Ver descripción →</div>
-      </div>
-    `;
-    card.addEventListener('click', () => mostrarDescripcion(i));
-    dishGrid.appendChild(card);
-  });
 
   // ---------- Overlay de descripción (reemplaza modal Bootstrap) ----------
   const overlay = document.getElementById('overlay');
