@@ -46,3 +46,33 @@
 
 \- WAF: desactivado
 
+
+
+\## Comportamiento de caché
+
+
+
+CloudFront guarda en caché las respuestas del origen (S3) en el punto de presencia que atiende al usuario. Con la política `cache-restaurante-oso` (TTL mínimo 0, predeterminado 86400 y máximo 31536000 segundos), un archivo sin encabezados de caché propios se conserva 24 horas.
+
+
+
+\### Miss y Hit
+
+\- La primera petición devuelve `X-Cache: Miss from cloudfront`: CloudFront no tenía el objeto y lo pidió a S3.
+
+\- Las siguientes devuelven `X-Cache: Hit from cloudfront`, junto con el encabezado `Age`, que indica los segundos que lleva el objeto en caché. En esos casos S3 no recibe la petición.
+
+
+
+\### Qué ocurre cuando se modifica un archivo ya almacenado en caché
+
+Si `index.html` cambia en S3, CloudFront sigue entregando la copia anterior hasta que ocurra una de estas dos cosas:
+
+1\. Vence el TTL (hasta 24 horas con la configuración actual), tras lo cual CloudFront vuelve a consultar al origen.
+
+2\. Se crea una invalidación (por ejemplo, con la ruta `/\*`), que elimina las copias almacenadas y obliga a pedir la versión nueva a S3.
+
+
+
+Por eso, después de actualizar un archivo en S3, el origen muestra el contenido nuevo y CloudFront puede seguir mostrando el anterior. Esto se comprobará en la prueba experimental de caché y se resolverá con una invalidación.
+
